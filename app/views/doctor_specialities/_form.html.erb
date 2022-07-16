@@ -1,0 +1,22 @@
+<%= form_with(model: doctor_speciality) do |form| %>
+  <% if doctor_speciality.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(doctor_speciality.errors.count, "error") %> prohibited this speciality from being saved:</h2>
+
+      <ul>
+        <% doctor_speciality.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3 w-25">
+    <%= form.text_field :name, class: 'form-control', placeholder:'Speciality' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary' %>
+    <%= link_to 'Back', root_path, class:'btn btn-dark ms-2' %>
+  </div>
+<% end %>
