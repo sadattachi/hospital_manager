@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_16_084900) do
+ActiveRecord::Schema.define(version: 2022_07_16_092200) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,11 +47,22 @@ ActiveRecord::Schema.define(version: 2022_07_16_084900) do
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "speciality_id"
+    t.integer "doctor_speciality_id"
   end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "phone", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.integer "profile_id", null: false
+    t.integer "role_id", null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["phone"], name: "index_users_on_phone", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

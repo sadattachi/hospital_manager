@@ -22,6 +22,7 @@ gem 'turbolinks', '~> 5'
 gem 'cloudinary', '~> 1.2', '>= 1.2.2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'devise', '~> 4.8', '>= 4.8.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
