@@ -1,6 +1,7 @@
 <table class="table table-striped table-bordered table-hover">
   <thead class="table-dark">
     <tr>
+      <th>Avatar</th>
       <th>First name</th>
       <th>Last name</th>
       <th>Phone</th>
@@ -14,12 +15,14 @@
   <tbody>
     <% doctors.each do |doctor| %>
     <tr>
+
+ <td><%= cl_image_tag doctor.profile.avatar.key, :width=>150, :crop=>"fill" %></td> 
       <td><%= doctor.profile.first_name %></td>
       <td><%= doctor.profile.last_name %></td>
       <td><%= doctor.phone %></td>
       <td><%= doctor.profile.doctor_speciality.name %></td>
       <%if current_user.admin?%>
-      <td><%= link_to 'Edit', edit_player_path(player) %></td>
+      <td><%= link_to 'Edit', edit_profile_path(doctor) %></td>
 <%end%>
       <%
 =begin%>

@@ -1,0 +1,17 @@
+class ProfileController < ApplicationController
+  before_action :authenticate_user!
+  def edit
+    @profile = User.find(params[:id]).profile
+  end
+
+  def update
+    @profile = User.find(params[:id]).profile
+    redirect_to root_path, notice: 'Doctor was successfully updated.' if @profile.update(profile_params)
+  end
+
+  private
+
+  def profile_params
+    params.require(:profile).permit(:avatar)
+  end
+end
