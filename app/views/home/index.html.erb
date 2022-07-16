@@ -1,1 +1,3 @@
-<p>HI!</p>
+<%if can? :read, @doctors.first%>
+    <%= render 'doctors', doctors: @doctors%>
+<%end%>
