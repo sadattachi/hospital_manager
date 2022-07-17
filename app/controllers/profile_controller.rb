@@ -1,5 +1,6 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
   def edit
     @profile = User.find(params[:id]).profile
   end
