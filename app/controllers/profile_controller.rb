@@ -12,6 +12,6 @@ class ProfileController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:avatar)
+    params.require(:profile).permit(:doctor_speciality_id, :avatar)
   end
 end
