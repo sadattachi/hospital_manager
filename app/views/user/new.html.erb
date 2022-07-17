@@ -1,0 +1,9 @@
+<%= form_with url: user_path do |f| %>
+    <%= f.text_field :first_name, placeholder: 'First Name'%>
+    <%= f.text_field :last_name, placeholder: 'Last Name'%>
+    <%= f.text_field :phone, placeholder: 'Phone'%>
+    <%= f.text_field :password, placeholder: 'Password'%>
+    <%= collection_select(:profile, :doctor_speciality_id, DoctorSpeciality.all, :id, :name, prompt: true)%>
+    <%= f.file_field :avatar %> 
+    <%= f.submit "Create Doctor" %>
+<% end %>
