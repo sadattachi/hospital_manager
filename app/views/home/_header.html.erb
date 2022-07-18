@@ -22,7 +22,7 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
 
         <%if user_signed_in?%>
-        <%if current_user.patient?%>
+        <%if current_user.patient? || current_user.doctor?%>
             <li class="nav-item me-2">
                 <%= link_to "My appointments", appointments_path, class: "nav-link"%>
             </li>
