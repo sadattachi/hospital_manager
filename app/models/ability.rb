@@ -9,7 +9,10 @@ class Ability
     user ||= User.new(role_id: 1)
 
     can :manage, :all if user.admin?
-    can :read, User if user.patient?
+    if user.patient?
+      can :read, User
+      can :read, Appointment
+    end
     cannot :read, User if user.doctor?
     # Define abilities for the user here. For example:
     #
