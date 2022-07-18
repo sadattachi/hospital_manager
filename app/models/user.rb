@@ -7,6 +7,12 @@ class User < ApplicationRecord
   belongs_to :role
   belongs_to :profile
 
+  has_many :doctor_appointments, foreign_key: :patient_id, class_name: 'Appointment'
+  has_many :doctors, through: :doctor_appointments
+
+  has_many :patient_appointments, foreign_key: :doctor_id, class_name: 'Appointment'
+  has_many :patients, through: :patient_appointments
+
   def email_required?
     false
   end
