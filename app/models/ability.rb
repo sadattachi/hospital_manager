@@ -13,7 +13,10 @@ class Ability
       can :read, User
       can %i[read create], Appointment
     end
-    cannot :read, User if user.doctor?
+    if user.doctor?
+      cannot :read, User
+      can %i[read update], Appointment
+    end
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
