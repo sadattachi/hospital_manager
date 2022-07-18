@@ -6,7 +6,7 @@ class ProfileController < ApplicationController
   end
 
   def update
-    @profile = User.find(params[:id]).profile
+    @profile = Profile.find(params[:id])
     redirect_to root_path, notice: 'Doctor was successfully updated.' if @profile.update(profile_params)
   end
 
