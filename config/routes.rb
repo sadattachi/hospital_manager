@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :doctor_specialities, only: %i[new create]
   resources :profile, only: %i[show edit update]
-  resources :appointments, only: %i[index]
+  resources :appointments, only: %i[index update]
   post 'appointments/:id', to: 'appointments#create'
   # resources :user, only: %i[new create]
   get '/user/new', to: 'user#new'
