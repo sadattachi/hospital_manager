@@ -6,8 +6,11 @@
       <th>Last name</th>
       <th>Phone</th>
       <th>Speciality</th>
+      <%if current_user.patient?%>
+        <th>Appointment</th>
+      <%end%>
       <%if current_user.admin?%>
-      <th>Actions</th>
+        <th>Actions</th>
       <%end%>
     </tr>
   </thead>
@@ -21,9 +24,16 @@
       <td><%= doctor.profile.last_name %></td>
       <td><%= doctor.phone %></td>
       <td><%= doctor.profile.doctor_speciality.name %></td>
+      <%if current_user.patient?%>
+        <%if User.find_by(id: doctor.id.to_i).patient_appointments.count < 10%>
+          <td><%= link_to 'Request appointment', "/appointments/#{doctor.id}", method: :post %></td>
+        <%else%>
+          <td>Doctor has maximum amount of appointments! Try later!</td>
+        <%end%>
+      <%end%>
       <%if current_user.admin?%>
-      <td><%= link_to 'Edit', edit_profile_path(doctor) %></td>
-<%end%>
+        <td><%= link_to 'Edit', edit_profile_path(doctor) %></td>
+      <%end%>
       <%
 =begin%>
  <td><%= link_to 'Show', player %></td>
