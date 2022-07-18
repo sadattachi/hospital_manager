@@ -1,5 +1,5 @@
 <%= form_for @profile do |f| %>
-<%=collection_select(:profile, :doctor_speciality_id, DoctorSpeciality.all, :id, :name, prompt: true)%>
+    <%= collection_select(:profile, :doctor_speciality_id, DoctorSpeciality.all, :id, :name, prompt: true)%>
     <%= f.file_field :avatar %>
     <%= f.submit "Update User" %>
 <% end %>
