@@ -19,4 +19,14 @@ class AppointmentsController < ApplicationController
       redirect_to root, notice: 'Cannot add appointment'
     end
   end
+
+  def update
+    @appointment = Appointment.find_by(id: params[:id])
+
+    if @appointment.update(status: 'Closed', recommendations: params[:recommendations])
+      redirect_to appointments_path, notice: 'Recommendation was added'
+    else
+      redirect_to appointments_path, notice: 'Recommendation cannot be added'
+    end
+  end
 end
