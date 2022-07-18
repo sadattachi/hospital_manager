@@ -11,7 +11,7 @@ class Ability
     can :manage, :all if user.admin?
     if user.patient?
       can :read, User
-      can :read, Appointment
+      can %i[read create], Appointment
     end
     cannot :read, User if user.doctor?
     # Define abilities for the user here. For example:
