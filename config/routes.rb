@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
+  get '/filter', to: 'home#filter'
   resources :doctor_specialities, only: %i[new create]
   resources :profile, only: %i[show edit update]
   resources :appointments, only: %i[index update]
