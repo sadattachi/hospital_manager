@@ -1,0 +1,21 @@
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Phone</th>
+      <th>Number of Appointment</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% patients.each do |patient| %>
+    <tr>
+      <td><%= patient.profile.first_name %></td>
+      <td><%= patient.profile.last_name %></td>
+      <td><%= patient.phone %></td>
+      <td><%= patient.doctor_appointments.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
