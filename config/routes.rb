@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   root 'home#index'
   get '/filter', to: 'home#filter'
   resources :doctor_specialities, only: %i[new create]
