@@ -1,7 +1,7 @@
 <%= form_tag(filter_path, :method => "get") do %>
   <%= collection_select(:profile, :doctor_speciality_id, 
   DoctorSpeciality.all, :id, :name, 
-  options = {prompt: true, selected: current_select}, 
+  options = {prompt: true, selected: @current_select}, 
   html_options = {class: 'form-select w-25'})%>
   <%= button_tag "Show", type: "submit", class: 'btn btn-outline-success', name: nil%>
 <% end %>
@@ -23,7 +23,7 @@
   </thead>
 
   <tbody>
-    <% doctors.each do |doctor| %>
+    <% @doctors.each do |doctor| %>
     <tr>
 
  <td><%= cl_image_tag doctor.profile.avatar.key, :width=>150, :crop=>"fill" %></td> 
