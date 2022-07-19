@@ -16,7 +16,13 @@
   <body>
   <%= render 'home/header' %>
   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+    <%if alert.kind_of?(Array)%>
+      <%alert.each do |a|%>
+      <p class="alert"><%= a %></p>
+      <%end%>
+    <%else%>
+      <p class="alert"><%= alert %> aaaa</p>
+    <%end%>
     <%= yield %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
