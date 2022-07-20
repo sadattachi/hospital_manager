@@ -24,6 +24,7 @@ gem 'cloudinary', '~> 1.2', '>= 1.2.2'
 # gem 'image_processing', '~> 1.2'
 gem 'cancancan', '~> 3.4'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'activeadmin'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
