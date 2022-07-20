@@ -1,5 +1,8 @@
 <%= form_for @profile do |f| %>
+    <%if @profile.avatar.attached?%>
+        <%= cl_image_tag @profile.avatar.key, :width=>150, :crop=>"fill" %>
+    <%end%>
     <%= collection_select(:profile, :doctor_speciality_id, DoctorSpeciality.all, :id, :name, prompt: true)%>
     <%= f.file_field :avatar %>
-    <%= f.submit "Update User" %>
+    <%= f.submit "Update Doctor" %>
 <% end %>
