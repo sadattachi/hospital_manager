@@ -4,11 +4,44 @@ ActiveAdmin.register User do
       render template: 'user/new', layout: 'active_admin'
     end
 
+    def create
+      @profile = Profile.new(first_name: params[:first_name],
+                             last_name: params[:last_name],
+                             doctor_speciality_id: params[:profile][:doctor_speciality_id],
+                             avatar: params[:avatar])
+      authorize! :create, @profile
+      @profile.save
+      @user = User.new(phone: params[:phone],
+                       password: params[:password],
+                       profile_id: @profile.id,
+                       role_id: Role.find_by(name: 'Doctor').id)
+      authorize! :create, @user
+      if @user.save
+        redirect_to admin_users_path
+      else
+        redirect_to request.referer, alert: @user.errors.full_messages
+        @profile.destroy
+      end
+    end
+
     def edit
       @profile = User.find(params[:id]).profile
       render template: 'profile/edit', layout: 'active_admin'
     end
+
+    def update
+      @profile = Profile.find(params[:id])
+      authorize! :update, @profile
+      redirect_to admin_users_path, notice: 'Doctor was successfully updated.' if @profile.update(profile_params)
+    end
+
+    private
+
+    def profile_params
+      params.require(:profile).permit(:doctor_speciality_id, :avatar)
+    end
   end
+
   index do
     selectable_column
     column 'Picture' do |user|
