@@ -3,10 +3,6 @@ ActiveAdmin.register User do
     def new
       render template: 'user/new', layout: 'active_admin'
     end
-
-    def create
-      byebug
-    end
   end
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
