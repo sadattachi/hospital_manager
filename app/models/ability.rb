@@ -6,17 +6,16 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    user ||= User.new(role_id: 1)
-
-    can :manage, :all if user.admin?
     if user.patient?
       can :read, User
       can %i[read create], Appointment
-    end
-    if user.doctor?
+    elsif user.doctor?
       cannot :read, User
       can %i[read update], Appointment
+    else
+      can :manage, :all
     end
+
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
