@@ -30,15 +30,12 @@ ActiveAdmin.register User do
     end
 
     def update
-      @profile = Profile.find(params[:id])
+      @profile = User.find(params[:id]).profile
       authorize! :update, @profile
-      redirect_to admin_users_path, notice: 'Doctor was successfully updated.' if @profile.update(profile_params)
-    end
-
-    private
-
-    def profile_params
-      params.require(:profile).permit(:doctor_speciality_id, :avatar)
+      if @profile.update(doctor_speciality_id: params[:profile][:doctor_speciality_id].to_i,
+                         avatar: params[:profile][:avatar])
+        redirect_to admin_users_path, notice: 'Doctor was successfully updated!'
+      end
     end
   end
 
@@ -52,7 +49,7 @@ ActiveAdmin.register User do
     end
     column 'Doctor Speciality' do |user|
       if user.profile.doctor_speciality.nil?
-        'Patient'
+        '-'
       else
         user.profile.doctor_speciality
       end
