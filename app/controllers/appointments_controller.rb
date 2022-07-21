@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save && User.find_by(id: params[:id].to_i).patient_appointments.count <= 10
       redirect_to appointments_path, notice: 'Appointment was added'
     else
-      redirect_to root, notice: 'Cannot add appointment'
+      redirect_to root_path, notice: 'Cannot add appointment'
     end
   end
 
