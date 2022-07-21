@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
 
-  validates :phone, uniqueness: true
+  validates :phone, uniqueness: true,
+                    presence: true,
+                    numericality: true,
+                    length: { minimum: 10, maximum: 15 }
 
   belongs_to :role
   belongs_to :profile
