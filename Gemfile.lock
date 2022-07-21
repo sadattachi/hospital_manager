@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: b98d32dcca8aa482525320d8463dff741af0d84d
+  branch: master
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -106,6 +114,11 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.10.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.5)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
@@ -295,6 +308,8 @@ DEPENDENCIES
   capybara (~> 3.37, >= 3.37.1)
   cloudinary (~> 1.2, >= 1.2.2)
   devise (~> 4.8, >= 4.8.1)
+  factory_bot_rails (~> 6.2)
+  faker!
   listen (~> 3.3)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
