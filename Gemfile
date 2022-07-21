@@ -22,14 +22,16 @@ gem 'turbolinks', '~> 5'
 gem 'cloudinary', '~> 1.2', '>= 1.2.2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'activeadmin'
 gem 'cancancan', '~> 3.4'
 gem 'devise', '~> 4.8', '>= 4.8.1'
-gem 'activeadmin'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  gem 'capybara', '~> 3.37', '>= 3.37.1'
+  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
