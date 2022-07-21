@@ -1,0 +1,59 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to 'Hospital', root_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <%
+=begin%>
+ <%= form_tag(search_path, :method => "get") do %>
+
+      <div class="d-flex">
+        <%= search_field_tag :search, params[:search], placeholder: "Tag", class: "form-control me-2" %>
+        <%= button_tag "Search", type: "submit", :class => 'btn btn-outline-success', :name => nil%>
+      </div>
+      <% end %> 
+<%
+=end%>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
+
+        <%if user_signed_in?%>
+        <%if current_user.patient? || current_user.doctor?%>
+            <li class="nav-item me-2">
+                <%= link_to "My appointments", appointments_path, class: "nav-link"%>
+            </li>
+        <%end%>
+        <%if can? :create, @user%>
+            <li class="nav-item me-2">
+                <%= link_to "Add doctor", user_new_path, class: "nav-link"%>
+            </li>
+        <%end%>
+        <%if can? :create, @speciality%>
+            <li class="nav-item me-2">
+                <%= link_to "Add speciality", new_doctor_speciality_path, class: "nav-link"%>
+            </li>
+        <%end%>
+        <span class="navbar-text" style="color: white;">
+            <%= current_user.profile.first_name+ ' '+current_user.profile.last_name%>
+        </span>
+        <li class="nav-item me-2">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link"%>
+        </li>
+        <% else %>
+
+ <li class="nav-item">
+          <%= link_to "Sign Up", new_user_registration_path, class:"nav-link"%>
+        </li> 
+
+        <li class="nav-item me-2">
+          <%= link_to "Sign In", new_user_session_path, class:"nav-link"%>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

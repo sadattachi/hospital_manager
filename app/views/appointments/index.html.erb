@@ -1,0 +1,3 @@
+<%if can? :read, @appointments.first%>
+    <%= render 'appointments', appointments: @appointments%>
+<%end%>

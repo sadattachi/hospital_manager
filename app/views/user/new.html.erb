@@ -1,0 +1,10 @@
+<h2>Add new doctor</h2>
+<%= form_with url: admin_users_path do |f| %>
+    <%= f.text_field :first_name, placeholder: 'First Name', style: 'margin-bottom: 10px; width: 250px;'%> </br>
+    <%= f.text_field :last_name, placeholder: 'Last Name', style: 'margin-bottom: 10px; width: 250px;'%> </br>
+    <%= f.text_field :phone, placeholder: 'Phone', style: 'margin-bottom: 10px; width: 250px;'%> </br>
+    <%= f.text_field :password, placeholder: 'Password', style: 'margin-bottom: 10px; width: 250px;'%> </br>
+    <%= collection_select(:profile, :doctor_speciality_id, DoctorSpeciality.all, :id, :name, prompt: true)%> </br>
+    <%= f.file_field :avatar, style: 'margin-top: 10px; margin-bottom: 10px;' %> </br>
+    <%= f.submit "Create Doctor" %>
+<% end %>
