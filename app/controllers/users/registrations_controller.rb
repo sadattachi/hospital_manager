@@ -11,6 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    if params[:password] != params[:password_confirmation]
+      redirect_to new_user_registration_path, alert: 'Password and password confirmation field have different values'
+      return
+    end
     @profile = Profile.new(first_name: params[:first_name],
                            last_name: params[:last_name])
     @profile.save
