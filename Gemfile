@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'capybara', '~> 3.37', '>= 3.37.1'
+  gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
